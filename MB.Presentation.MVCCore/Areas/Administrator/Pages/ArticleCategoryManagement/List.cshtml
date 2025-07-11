@@ -1,0 +1,65 @@
+﻿@page
+@model MB.Presentation.MVCCore.Areas.Administrator.Pages.ArticleCategoryManagement.ListModel
+@{
+}
+
+<div class="card">
+	<div class="card-header">
+		<h3 class="float-left">Article Category List</h3>
+		<div class="float-right">
+			<a class="btn btn-success" asp-page="./Create" asp-area="Administrator">Create New</a>
+		</div>
+	</div>
+	<div class="card-body">
+		<table class="table">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Is Deleted</th>
+				<th>Creation Date</th>
+				<th>Operations</th>
+			</tr>
+			</thead>
+			<tbody>
+			@foreach (var articleCategory in Model.ArticleCategoriesList)
+			{
+
+					<tr>
+						<td>@articleCategory.Id</td>
+						<td>@articleCategory.Title</td>
+						<td>
+							@if (articleCategory.IsDeleted)
+							{
+								<i class="fa-solid fa-xmark fa-lg text-danger"></i>
+							}
+							else
+							{
+								<i class="fa-solid fa-check fa-lg text-success"></i>
+							}
+						</td>
+						<td>@articleCategory.CreationDate</td>
+						<td>
+							<a class="btn btn-warning float-left mr-3"  asp-page="./Edit" asp-route-id="@articleCategory.Id">Rename</a>
+							@if (articleCategory.IsDeleted)
+							{
+								<form class="float-left" method="post" asp-page-handler="Activate">
+									<button class="btn btn-success">Activate</button>
+									<input type="hidden" name="id" value="@articleCategory.Id"/>
+								</form>
+							}
+							else
+							{
+
+								<form class="float-left" method="post" asp-page-handler="Remove">
+									<button class="btn btn-danger">Remove</button>
+									<input type="hidden" name="id" value="@articleCategory.Id" />
+								</form>
+							}
+						</td>
+					</tr>
+			}
+			</tbody>
+		</table>
+	</div>
+</div>
