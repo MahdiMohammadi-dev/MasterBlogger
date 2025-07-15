@@ -2,8 +2,7 @@
 using MasterBlog.Domain.ArticleCategoryAgg;
 using MB.Application.Contracts.ArticleCategory;
 using MB.Domain.ArticleCategoryAgg;
-using MB.Domain.Service;
-
+using MB.Domain.ArticleCategoryAgg.Service;
 
 namespace MB.Application
 {

@@ -1,4 +1,4 @@
-﻿namespace MB.Domain.Service
+﻿namespace MB.Domain.ArticleCategoryAgg.Service
 {
     public interface IArticleCategoryValidatorService
     {

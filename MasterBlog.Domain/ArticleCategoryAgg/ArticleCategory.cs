@@ -1,4 +1,5 @@
-﻿using MB.Domain.Service;
+﻿using MB.Domain.ArticleAgg;
+using MB.Domain.ArticleCategoryAgg.Service;
 
 namespace MasterBlog.Domain.ArticleCategoryAgg
 {
@@ -8,13 +9,14 @@ namespace MasterBlog.Domain.ArticleCategoryAgg
         public string Title { get; private set; }
         public bool IsDeleted { get; private set; }
         public DateTime CreationDate { get; private set; }
-
+        public ICollection<Article> Articles { get; private set; }
         public ArticleCategory(string title,IArticleCategoryValidatorService validatorService)
         {
             validatorService.CheckDuplicatedRecord(title);
             Title = title;
             IsDeleted = false;
             CreationDate = DateTime.Now;
+            Articles = new List<Article>();
         }
 
         public void Rename(string title)
