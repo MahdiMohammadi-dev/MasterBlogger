@@ -16,7 +16,7 @@ namespace MB.Infrasturcture.EfCore.Mapping
             builder.ToTable("tb_Articles");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Title);
-            builder.Property(x => x.ShortDescripiton);
+            builder.Property(x => x.ShortDescription);
             builder.Property(x => x.Image);
             builder.Property(x => x.Content);
             builder.Property(x => x.CreationDate);

@@ -1,4 +1,7 @@
-﻿using MB.Domain.ArticleAgg;
+﻿using System.Globalization;
+using MB.Application.Contracts.Article;
+using MB.Domain.ArticleAgg;
+using Microsoft.EntityFrameworkCore;
 
 namespace MB.Infrasturcture.EfCore.Repositories
 {
@@ -12,5 +15,22 @@ namespace MB.Infrasturcture.EfCore.Repositories
         }
 
 
+        public List<ArticleViewModel> GetList()
+        {
+            return _context.Articles.Include(x => x.ArticleCategory).Select(x => new ArticleViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                ArticleCategory = x.ArticleCategory.Title,
+                IsDeleted = x.IsDeleted,
+               CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture)
+            }).ToList();
+        }
+
+        public void Create(Article article)
+        {
+            var articleEntry = _context.Articles.Add(article);
+            _context.SaveChanges();
+        }
     }
 }

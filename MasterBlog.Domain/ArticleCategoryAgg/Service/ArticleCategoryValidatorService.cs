@@ -1,5 +1,5 @@
 ﻿using MB.Domain.ArticleCategoryAgg;
-using MB.Domain.Exception;
+using MB.Domain.ArticleCategoryAgg.Exception;
 
 namespace MB.Domain.ArticleCategoryAgg.Service;
 

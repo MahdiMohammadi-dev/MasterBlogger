@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MasterBlog.Application.Contract\MB.Application.Contracts.csproj" />
     <ProjectReference Include="..\MasterBlog.Domain\MB.Domain.csproj" />
   </ItemGroup>
 
