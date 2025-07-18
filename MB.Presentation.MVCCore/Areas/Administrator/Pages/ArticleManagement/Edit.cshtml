@@ -1,0 +1,65 @@
+﻿@page "{id:long}"
+@model MB.Presentation.MVCCore.Areas.Administrator.Pages.ArticleManagement.EditModel
+@{
+}
+
+
+<div class="card">
+	<div class="card-header">
+		<h2>Edit Article Category: @Model.EditArticle.Title</h2>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-12">
+				<form method="post">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<input type="hidden" asp-for="EditArticle.Id"/>
+
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group">
+							<label asp-for="EditArticle.Title" class="control-label">Title:</label>
+							<input asp-for="EditArticle.Title" class="form-control"/>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group">
+							<label asp-for="EditArticle.ShortDescription" class="control-label">ShortDescription:</label>
+							<input asp-for="EditArticle.ShortDescription" class="form-control"/>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group">
+							<label asp-for="EditArticle.Image" class="control-label">Image:</label>
+							<textarea asp-for="EditArticle.Image" class="form-control" ></textarea>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group">
+							<label asp-for="EditArticle.Content" class="control-label">Content:</label>
+							<input asp-for="EditArticle.Content" class="form-control"/>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group">
+							<label asp-for="EditArticle.ArticleCategoryId" class="control-label">Article Category:</label>
+							<select asp-for="EditArticle.ArticleCategoryId" asp-items="@Model.ArticleCategories" class="form-control">
+								<option value="0">Select an Option</option>
+							</select>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<input type="submit" value="Edit" class="btn btn-warning"/>
+						<a class="btn btn-dark" asp-page="./List" asp-area="Administrator">Back to list</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
