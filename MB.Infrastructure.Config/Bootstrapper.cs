@@ -2,6 +2,7 @@
 using MB.Application.Contracts.Article;
 using MB.Application.Contracts.ArticleCategory;
 using MB.Domain.ArticleAgg;
+using MB.Domain.ArticleAgg.Services;
 using MB.Domain.ArticleCategoryAgg;
 using MB.Domain.ArticleCategoryAgg.Service;
 using MB.Infrasturcture.EfCore;
@@ -19,7 +20,7 @@ namespace MB.Infrastructure.Core
             builder.AddTransient<IArticleCategoryRepository, ArticleCategoryRepository>();
             builder.AddTransient<IArticleCategoryApplication, ArticleCategoryApplication>();
             builder.AddTransient<IArticleCategoryValidatorService, ArticleCategoryValidatorService>();
-
+            builder.AddTransient<IArticleValidatorServices, ArticlevalidatorService>();
 
             builder.AddTransient<IArticleApplication, ArticleApplication>();
             builder.AddTransient<IArticleRepository, ArticleRepository>();

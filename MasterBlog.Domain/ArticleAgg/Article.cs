@@ -1,9 +1,12 @@
 ﻿using MasterBlog.Domain.ArticleCategoryAgg;
+using MB.Domain.ArticleAgg.Services;
 
 namespace MB.Domain.ArticleAgg
 {
     public class Article
     {
+
+        private readonly IArticleValidatorServices _services;
         public long Id { get; private set; }
         public string Title { get; private set; }
         public string ShortDescription { get; private set; }
@@ -21,6 +24,7 @@ namespace MB.Domain.ArticleAgg
 
         public Article(string title, string shortDescription, string image, string content, long articleCategoryId)
         {
+            _services.StringValidator(title,articleCategoryId);
             Title = title;
             ShortDescription = shortDescription;
             Image = image;
@@ -31,8 +35,11 @@ namespace MB.Domain.ArticleAgg
             
         }
 
+       
+
         public void Edit(string title, string shortDescription, string image, string content, long articleCategoryId)
         {
+            _services.StringValidator(title, articleCategoryId);
             Title = title;
             ShortDescription = shortDescription;
             Image = image;
@@ -50,5 +57,8 @@ namespace MB.Domain.ArticleAgg
         {
             IsDeleted = true;
         }
+
+
+       
     }
 }
