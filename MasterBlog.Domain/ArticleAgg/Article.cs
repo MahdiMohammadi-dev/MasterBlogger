@@ -24,7 +24,6 @@ namespace MB.Domain.ArticleAgg
 
         public Article(string title, string shortDescription, string image, string content, long articleCategoryId)
         {
-            _services.StringValidator(title,articleCategoryId);
             Title = title;
             ShortDescription = shortDescription;
             Image = image;

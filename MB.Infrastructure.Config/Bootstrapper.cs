@@ -5,6 +5,7 @@ using MB.Domain.ArticleAgg;
 using MB.Domain.ArticleAgg.Services;
 using MB.Domain.ArticleCategoryAgg;
 using MB.Domain.ArticleCategoryAgg.Service;
+using MB.Infrastructure.Query;
 using MB.Infrasturcture.EfCore;
 using MB.Infrasturcture.EfCore.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@ namespace MB.Infrastructure.Core
             builder.AddTransient<IArticleCategoryApplication, ArticleCategoryApplication>();
             builder.AddTransient<IArticleCategoryValidatorService, ArticleCategoryValidatorService>();
             builder.AddTransient<IArticleValidatorServices, ArticlevalidatorService>();
-
+            builder.AddTransient<IArticleQuery, ArticleQuery>();
             builder.AddTransient<IArticleApplication, ArticleApplication>();
             builder.AddTransient<IArticleRepository, ArticleRepository>();
 

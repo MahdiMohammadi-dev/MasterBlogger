@@ -1,0 +1,44 @@
+﻿@page "{id:long}"
+@model MB.Presentation.MVCCore.Pages.ArticlesDetailsModel
+@{
+	ViewData["Title"] = "Article Details Page";
+}
+
+<main class="post blog-post col-lg-12">
+	<div class="container">
+		<div class="post-single">
+			<div class="post-thumbnail">
+				<img src="https://modireweb.com/wp-content/uploads/2022/11/How-to-start-blogging-and-make-money-3.jpg" class="img-fluid" />
+			</div>
+
+			<div class="post-details">
+				<div class="post-meta d-flex justify-content-between">
+					<div class="category">
+						<a href="#">@Model.ArticleQueryView.ArticleCategory</a>
+					</div>
+				</div>
+
+				<h1>
+					@Model.ArticleQueryView.Title
+					<a href="#"><i class="fa fa-bookmark-o"></i></a>
+				</h1>
+
+				<div class="post-footer d-flex align-items-center flex-column flex-sm-row">
+					<div class="d-flex align-items-center flex-wrap">
+						<div class="date">
+							<i class="icon-clock"></i> @Model.ArticleQueryView.CreationDate
+						</div>
+						<div class="comments meta-last">
+							<i class="icon-comment"></i> 12
+						</div>
+					</div>
+				</div>
+
+				<div class="post-body">
+					<p>@Model.ArticleQueryView.ShortDescription</p>
+					@Model.ArticleQueryView.Content
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

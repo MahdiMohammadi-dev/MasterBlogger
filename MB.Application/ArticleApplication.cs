@@ -1,15 +1,18 @@
 ﻿using MB.Application.Contracts.Article;
 using MB.Domain.ArticleAgg;
+using MB.Domain.ArticleAgg.Services;
 
 namespace MB.Application
 {
     public class ArticleApplication : IArticleApplication
     {
         private readonly IArticleRepository _articleRepository;
+        private readonly IArticleValidatorServices _articleValidatorServices;
 
-        public ArticleApplication(IArticleRepository articleRepository)
+        public ArticleApplication(IArticleRepository articleRepository, IArticleValidatorServices articleValidatorServices)
         {
             _articleRepository = articleRepository;
+            _articleValidatorServices = articleValidatorServices;
         }
 
 
@@ -20,16 +23,18 @@ namespace MB.Application
 
         public void Create(CreateArticle commandCreateArticle)
         {
-            var article = new Article(commandCreateArticle.Title, commandCreateArticle.ShortDescription,
-                commandCreateArticle.Image, commandCreateArticle.Content, commandCreateArticle.ArticleCategoryId);
+            _articleValidatorServices.StringValidator(commandCreateArticle.Title,commandCreateArticle.ArticleCategoryId);
+            var article = new Article(commandCreateArticle.Title,commandCreateArticle.ShortDescription,commandCreateArticle.Image,commandCreateArticle.Content,commandCreateArticle.ArticleCategoryId);
 
             _articleRepository.Create(article);
-            
+            _articleRepository.Save();
+
         }
 
         public void Edit(EditArticle command)
         {
             var article = _articleRepository.Get(command.Id);
+            _articleValidatorServices.StringValidator(command.Title,command.ArticleCategoryId);
             article.Edit(command.Title,command.ShortDescription,command.Image,command.Content,command.ArticleCategoryId);
             _articleRepository.Save();
         }

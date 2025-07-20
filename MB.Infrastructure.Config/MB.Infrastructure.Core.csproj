@@ -14,6 +14,7 @@
     <ProjectReference Include="..\MasterBlog.Application.Contract\MB.Application.Contracts.csproj" />
     <ProjectReference Include="..\MasterBlog.Domain\MB.Domain.csproj" />
     <ProjectReference Include="..\MB.Application\MB.Application.csproj" />
+    <ProjectReference Include="..\MB.Infrastructure.Query\MB.Infrastructure.Query.csproj" />
     <ProjectReference Include="..\Mb.Infrasturcture.EfCore\MB.Infrasturcture.EfCore.csproj" />
   </ItemGroup>
 

@@ -4,18 +4,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MB.Presentation.MVCCore.Pages
 {
-    public class IndexModel : PageModel
+    public class ArticlesDetailsModel : PageModel
     {
         private readonly IArticleQuery _articleQuery;
-        public List<ArticleQueryView> Articles { get; set; }
-        public IndexModel(IArticleQuery articleQuery)
+        public ArticleQueryView ArticleQueryView { get; set; }
+
+        public ArticlesDetailsModel(IArticleQuery articleQuery)
         {
             _articleQuery = articleQuery;
         }
 
-        public void OnGet()
+        public void OnGet(long id)
         {
-          Articles= _articleQuery.GetArticles();
+            ArticleQueryView = _articleQuery.GetArticle(id);
         }
     }
 }
