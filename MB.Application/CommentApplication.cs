@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MB.Application.Contracts.Comment;
+﻿using MB.Application.Contracts.Comment;
+using MB.Contract.Shared;
 using MB.Domain.CommentAgg;
 
 namespace MB.Application
@@ -22,6 +18,27 @@ namespace MB.Application
         {
             var comment = new Comment(command.Name, command.Email, command.Message, command.ArticleId);
             _commentRepository.AddComment(comment);
+        }
+
+        public List<CommentViewModel> GetComments()
+        {
+            return _commentRepository.GetComments();
+        }
+
+        public void Confirmed(long id)
+        {
+            var comment = _commentRepository.Get(id);
+            comment.Confirm();
+            _commentRepository.Save();
+        }
+
+        public void Canceled(long id)
+        {
+
+            var comment = _commentRepository.Get(id);
+            comment.Cancel();
+            _commentRepository.Save();
+
         }
     }
 }
