@@ -8,5 +8,8 @@ namespace MB.Domain.CommentAgg
 {
     public interface ICommentRepository
     {
+        void AddComment(Comment  entity);
+
+        void Save();
     }
 }

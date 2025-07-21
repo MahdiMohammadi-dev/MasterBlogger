@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MB.Application.Contracts;
+using MB.Application.Contracts.Comment;
 using MB.Domain.CommentAgg;
 
 namespace MB.Application
@@ -18,5 +18,10 @@ namespace MB.Application
         }
 
 
+        public void AddComment(CreateComment command)
+        {
+            var comment = new Comment(command.Name, command.Email, command.Message, command.ArticleId);
+            _commentRepository.AddComment(comment);
+        }
     }
 }

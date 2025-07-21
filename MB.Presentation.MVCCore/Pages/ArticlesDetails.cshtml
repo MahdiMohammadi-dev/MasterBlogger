@@ -1,7 +1,7 @@
 ﻿@page "{id:long}"
 @model MB.Presentation.MVCCore.Pages.ArticlesDetailsModel
 @{
-	ViewData["Title"] = "Article Details Page";
+	ViewData["title"] = "Article Details Page";
 }
 
 <main class="post blog-post col-lg-12">
@@ -40,5 +40,32 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="add-comment">
+			<header>
+				<h3 class="h6">Leave a reply</h3>
+			</header>
+			<form method="post" class="commenting-form" asp-page-handler="SubmitComment">
+				<div class="row">
+					<div class="form-group col-md-6">
+						<input type="text" name="Name" id="Name" placeholder="Name" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<input type="email" name="Email" id="Email" placeholder="Email Address (will not be published)" class="form-control">
+					</div>
+					<div class="form-group col-md-12">
+						<textarea name="Message" id="Message" placeholder="Type your Message" class="form-control"></textarea>
+					</div>
+					<input type="hidden" name="ArticleId" value="@Model.ArticleQueryView.Id"/>
+					<div class="form-group col-md-12">
+						<button type="submit" class="btn btn-secondary" asp-page-handler="SubmitComment">Submit Comment</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		
+
 	</div>
+	
 </main>
