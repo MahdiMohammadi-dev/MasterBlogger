@@ -24,7 +24,6 @@ namespace MB.Presentation.MVCCore.Pages
 
         public RedirectToPageResult OnPostSubmitComment(CreateComment command)
         {
-            ArticleQueryView = _articleQuery.GetArticle(command.ArticleId);
             _commentApplication.AddComment(command);
             return RedirectToPage("./ArticlesDetails",new {id = command.ArticleId});
         }
